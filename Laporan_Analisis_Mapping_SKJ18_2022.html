@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laporan Analisis Kompetensi Pegawai & Mapping SKJ.18 Tahun 2022 — Inspektorat BMKG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --navy: #1B365D;
+      --navy-dk: #0F1F38;
+      --navy-lt: #2B4C7E;
+      --gold: #C5A059;
+      --gold-lt: #E8D5B0;
+      --gray-50: #F8FAFC;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+      --green-bg: #DCFCE7;
+      --green-text: #166534;
+      --red-bg: #FEE2E2;
+      --red-text: #991B1B;
+      --yellow-bg: #FEF3C7;
+      --yellow-text: #92400E;
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-display: 'Cinzel', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-main);
+      background-color: #F1F5F9;
+      color: var(--gray-800);
+      line-height: 1.5;
+      font-size: 13px;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+
+    /* Header Banner */
+    .header-banner {
+      background: linear-gradient(135deg, var(--navy-dk) 0%, var(--navy) 60%, var(--navy-lt) 100%);
+      color: #FFFFFF;
+      padding: 36px 40px;
+      position: relative;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .institution-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold-lt);
+      margin-bottom: 14px;
+    }
+
+    .header-banner h1 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .header-banner p {
+      font-size: 14px;
+      color: #CBD5E1;
+      max-width: 950px;
+    }
+
+    /* KPI Summary Row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      padding: 28px 40px;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .kpi-card {
+      background: #FFFFFF;
+      padding: 18px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+      border-left: 4px solid var(--navy);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .kpi-card.accent { border-left-color: var(--gold); }
+    .kpi-card.alert { border-left-color: #EF4444; }
+    .kpi-card.success { border-left-color: #10B981; }
+
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .kpi-desc {
+      font-size: 11.5px;
+      color: var(--gray-600);
+    }
+
+    /* Main Content Sections */
+    .content-body {
+      padding: 36px 40px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      border-bottom: 2px solid var(--navy-lt);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    .alert-box {
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .alert-box.info {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1E40AF;
+    }
+    .alert-box.warning {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      color: #92400E;
+    }
+
+    .formula-card {
+      background: #F8FAFC;
+      border: 1px solid var(--gray-200);
+      border-left: 4px solid var(--navy-lt);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+    }
+    .formula-card strong { color: var(--navy); font-size: 13px; display: block; margin-bottom: 4px; }
+    .formula-card code {
+      display: block;
+      background: #EFF6FF;
+      border: 1px solid #DBEAFE;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #1E3A8A;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    thead th {
+      background: var(--navy);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 10px 12px;
+      font-size: 11.5px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      white-space: nowrap;
+    }
+
+    thead th.sub {
+      background: var(--navy-lt);
+      font-size: 11px;
+    }
+
+    tbody td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--gray-200);
+      border-right: 1px solid var(--gray-200);
+      vertical-align: middle;
+    }
+
+    tbody tr:nth-child(even) { background: var(--gray-50); }
+    tbody tr:hover { background: #F8FAFC; }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 10.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge-green { background: var(--green-bg); color: var(--green-text); }
+    .badge-red { background: var(--red-bg); color: var(--red-text); }
+    .badge-yellow { background: var(--yellow-bg); color: var(--yellow-text); }
+    .badge-blue { background: #DBEAFE; color: #1E40AF; }
+    .badge-gray { background: var(--gray-200); color: var(--gray-800); }
+
+    .level-box {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border-radius: 4px;
+    }
+    .level-pass { background: var(--green-bg); color: var(--green-text); }
+    .level-gap { background: var(--red-bg); color: var(--red-text); font-weight: 800; }
+
+    /* Cards Grid */
+    .grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .info-card {
+      background: #FFFFFF;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .info-card h4 {
+      font-size: 14px;
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--gray-200);
+      padding-bottom: 6px;
+    }
+
+    .footer {
+      padding: 20px 40px;
+      background: var(--gray-100);
+      border-top: 1px solid var(--gray-200);
+      font-size: 11.5px;
+      color: var(--gray-600);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media print {
+      body { padding: 0; background: #FFF; font-size: 11px; }
+      .container { box-shadow: none; border: none; border-radius: 0; max-width: 100%; }
+      .header-banner { padding: 20px; }
+      .content-body { padding: 20px; }
+      .kpi-row { padding: 15px 20px; }
+      .edit-toolbar, .toast-container, .sertif-editor, #sertifOverlay { display: none !important; }
+    }
+
+    /* ===== EDITABLE SERTIFIKASI STYLES ===== */
+    .sertif-cell {
+      cursor: pointer;
+      position: relative;
+      min-width: 160px;
+      transition: background 0.15s;
+    }
+    .sertif-cell:hover {
+      background: #EFF6FF !important;
+    }
+    .sertif-cell::after {
+      content: 'edit';
+      font-family: 'Material Symbols Outlined', sans-serif;
+      position: absolute;
+      top: 4px;
+      right: 5px;
+      font-size: 10px;
+      opacity: 0;
+      color: #94A3B8;
+      transition: opacity 0.2s;
+    }
+    .sertif-cell:hover::after { opacity: 1; }
+    .sertif-cell.modified {
+      background: #F0FDF4 !important;
+      border-left: 3px solid #22C55E !important;
+    }
+    .sertif-cell .edit-hint {
+      display: none;
+      position: absolute;
+      top: 2px;
+      right: 4px;
+      font-size: 9px;
+      color: #94A3B8;
+    }
+    .sertif-cell:hover .edit-hint { display: inline; }
+
+    /* Inline editor popup */
+    .sertif-editor {
+      position: fixed;
+      z-index: 9999;
+      background: #fff;
+      border: 2px solid var(--navy);
+      border-radius: 10px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+      min-width: 280px;
+      max-width: 380px;
+    }
+    .sertif-editor-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--navy);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .sertif-editor-name {
+      font-size: 11.5px;
+      color: #475569;
+      margin-bottom: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tag-input-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      padding: 6px 8px;
+      min-height: 40px;
+      cursor: text;
+      background: #F8FAFC;
+      position: relative;
+    }
+    .tag-input-wrapper:focus-within {
+      border-color: var(--navy);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(27,54,93,0.1);
+    }
+    .tag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #DBEAFE;
+      color: #1E40AF;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .tag-chip .remove-tag {
+      cursor: pointer;
+      font-size: 13px;
+      line-height: 1;
+      color: #93C5FD;
+      transition: color 0.15s;
+    }
+    .tag-chip .remove-tag:hover { color: #1E40AF; }
+    .tag-input-field {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 12px;
+      min-width: 80px;
+      flex: 1;
+      font-family: var(--font-main);
+      color: var(--gray-800);
+    }
+    .tag-hint {
+      font-size: 10.5px;
+      color: #94A3B8;
+      margin-top: 5px;
+    }
+    .suggestions-list {
+      position: absolute;
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      list-style: none;
+      padding: 4px 0;
+      z-index: 10000;
+      min-width: 160px;
+      max-width: 360px;
+      display: none;
+    }
+    .suggestions-list li {
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .suggestions-list li:hover { background: #EFF6FF; color: var(--navy); }
+    .editor-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .btn-save {
+      flex: 1;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-save:hover { background: var(--navy-lt); }
+    .btn-cancel {
+      background: var(--gray-100);
+      color: var(--gray-600);
+      border: none;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-cancel:hover { background: var(--gray-200); }
+    .btn-clear {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-clear:hover { background: #FECACA; }
+
+    /* Sticky Edit Toolbar */
+    .edit-toolbar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 8888;
+    }
+    .toolbar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .toolbar-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+    .btn-export { background: var(--navy); color: #fff; }
+    .btn-reset-all { background: #FEE2E2; color: #991B1B; }
+    .edit-count-badge {
+      background: #22C55E;
+      color: #fff;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    /* Toast */
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .toast {
+      background: #1E293B;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: toastIn 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toast.success { border-left: 4px solid #22C55E; }
+    .toast.info { border-left: 4px solid #3B82F6; }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header Banner -->
+  <div class="header-banner">
+    <div class="institution-tag">Inspektorat BMKG &bull; Tata Kelola SDM Pengawasan &bull; SKJ.18 TAHUN 2022</div>
+    <h1>Laporan Analisis Kompetensi Pegawai & Mapping SKJ.18 Tahun 2022</h1>
+    <p>Hasil Evaluasi Komprehensif Data Kepegawaian, Pelatihan, Penjenjangan, dan Sertifikasi Profesi Pegawai Inspektorat BMKG Posisi s.d. September 2026 terhadap Standar Kompetensi Jabatan Fungsional Auditor Nasional.</p>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Sumber Daya Manusia</div>
+      <div class="kpi-value">45 Orang</div>
+      <div class="kpi-desc">35 Pejabat Fungsional Auditor, 10 Pegawai Penunjang Pengawasan</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="kpi-label">Auditor Bersertifikasi Profesi</div>
+      <div class="kpi-value">19 Orang (54%)</div>
+      <div class="kpi-desc">15 QIA, 9 CFrA, 5 IT Audit/CISA, 4 CGAA, 2 CRMP, 2 CRMO</div>
+    </div>
+    <div class="kpi-card alert">
+      <div class="kpi-label">Kesenjangan Terbesar (T6 PMP)</div>
+      <div class="kpi-value">32 Orang (91.4%)</div>
+      <div class="kpi-desc">Defisit kapabilitas Data Analytics, Audit Tools (CAATs), dan AI Audit</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Kekuatan Inti (T5 PPI)</div>
+      <div class="kpi-value">88.6% Memenuhi</div>
+      <div class="kpi-desc">Kompetensi Pelaksanaan Pengawasan & Audit Investigasi sangat solid</div>
+    </div>
+  </div>
+
+  <div class="content-body">
+    <!-- BAB 1: DASAR HUKUM & METODOLOGI PERHITUNGAN -->
+    <h2 class="section-title">1. Dasar Regulasi Rujukan & Metodologi Perhitungan Skor / Gap Analysis</h2>
+    <div class="alert-box info">
+      <strong>Lembar Kerja Khusus pada Spreadsheet Excel:</strong> Rincian lengkap metodologi perhitungan dan dasar hukum formal telah dituangkan secara terpisah ke dalam sheet <strong><code>METODE &amp; REGULASI SKJ.18</code></strong> pada file <code>Mapping_Kompetensi_Pegawai_IPR_SKJ18_2022.xlsx</code>.
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40px;">No</th>
+            <th>Tingkat Regulasi</th>
+            <th>Nomor &amp; Tahun</th>
+            <th>Judul / Nomenklatur Peraturan</th>
+            <th>Substansi Pokok &amp; Relevansi Pengukuran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center;">1</td>
+            <td><strong>Undang-Undang</strong></td>
+            <td>UU No. 20 Tahun 2023</td>
+            <td>Aparatur Sipil Negara (ASN)</td>
+            <td>Asas Sistem Merit &amp; Manajemen Talenta ASN. Pasal 49 mewajibkan setiap ASN melakukan pengembangan kompetensi berkelanjutan melalui pembelajaran terintegrasi.</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">2</td>
+            <td><strong>Peraturan Pemerintah</strong></td>
+            <td>PP No. 11/2017 jo. PP No. 17/2020</td>
+            <td>Manajemen Pegawai Negeri Sipil</td>
+            <td>Standar Kompetensi Jabatan ASN (Teknis, Manajerial, Sosial Kultural) sebagai dasar wajib uji kompetensi, penempatan, promosi, dan penyusunan rencana pelatihan.</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">3</td>
+            <td><strong>Peraturan Menteri</strong></td>
+            <td>PermenPANRB No. 38 Tahun 2017</td>
+            <td>Standar Kompetensi Jabatan ASN</td>
+            <td>Menetapkan kamus kompetensi ASN, pembagian skala tingkat kemahiran 5 Level (Level 1 Awareness s.d. Level 5 Expert), serta metode baku pengukuran kesenjangan kompetensi (Gap Analysis).</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">4</td>
+            <td><strong>Peraturan Menteri</strong></td>
+            <td>PermenPANRB No. 48 Tahun 2022</td>
+            <td>Jabatan Fungsional Auditor</td>
+            <td>Tugas pokok JFA, butir kegiatan, kategori keterampilan dan keahlian, serta kewajiban pemenuhan Pengembangan Profesi Berkelanjutan (PPL/CPD) minimal 120 JP per 3 tahun.</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">5</td>
+            <td><strong>Keputusan Menteri (Rujukan Utama)</strong></td>
+            <td>KepmenPANRB No. SKJ.18 Tahun 2022</td>
+            <td>Standar Kompetensi Jabatan Fungsional Auditor</td>
+            <td><strong>STANDAR BAKU JFA:</strong> Menetapkan 6 Unit Kompetensi Teknis Auditor, kamus indikator perilaku per level kemahiran, dan standar persyaratan level untuk setiap jenjang jabatan auditor.</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">6</td>
+            <td><strong>Standar Asosiasi Profesi</strong></td>
+            <td>Peraturan BPKP &amp; Standar AAIPI</td>
+            <td>Standar Audit Intern Pemerintah Indonesia (SAIPI)</td>
+            <td>Standar profesi audit intern pemerintah, kode etik pengawasan, telaah sejawat (peer review), serta kerangka sertifikasi profesi (QIA, CFrA, CRMP, CGCAE).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FORMULA BOXES -->
+    <div class="grid-two">
+      <div class="formula-card">
+        <strong>Formula Kesenjangan per Unit Kompetensi (Gap_i)</strong>
+        Menghitung selisih capaian riil terhadap standar level yang dipersyaratkan pada masing-masing dari 6 unit teknis (T1 s.d. T6):
+        <code>Gap_i = S_riil, i - L_standar</code>
+        <small style="color:#64748B;">Keterangan: Jika Gap &ge; 0 = Memenuhi ; Jika Gap &lt; 0 = Defisit sebesar |Gap| level.</small>
+      </div>
+
+      <div class="formula-card">
+        <strong>Formula Total Poin Kesenjangan (Total Gap)</strong>
+        Akumulasi poin kekurangan kompetensi teknis seorang pegawai yang menjadi beban target pelatihan (TNA):
+        <code>Total Gap = &Sigma; MAX(0, L_standar - S_riil, i)</code>
+        <small style="color:#64748B;">Indeks beban intervensi pelatihan untuk menutup kesenjangan.</small>
+      </div>
+    </div>
+
+    <!-- BAB 2: MATRIKS KESENJANGAN -->
+    <h2 class="section-title">2. Rekapitulasi Kesenjangan 6 Unit Kompetensi Teknis Auditor (SKJ.18 Tahun 2022)</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Unit Kompetensi Teknis SKJ.18</th>
+            <th style="text-align:center;">Auditor Gap</th>
+            <th style="text-align:center;">% Defisit</th>
+            <th style="text-align:center;">Total Poin Gap</th>
+            <th style="text-align:center;">Rata2 Skor</th>
+            <th style="text-align:center;">Tingkat Urgensi</th>
+            <th>Program Solusi / Intervensi Diklat (TNA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>T6 (PMP)</strong></td>
+            <td><strong>Pengembangan Metodologi Pengawasan</strong></td>
+            <td style="text-align:center;"><span class="badge badge-red">32 orang</span></td>
+            <td style="text-align:center;"><strong>91.4%</strong></td>
+            <td style="text-align:center;">52 poin</td>
+            <td style="text-align:center;">1.09</td>
+            <td style="text-align:center;"><span class="badge badge-red">SANGAT TINGGI</span></td>
+            <td>Pelatihan Computer Assisted Audit Techniques (CAATs), Data Analytics Pengawasan, Audit SPBE/Siber, Otomasi Audit</td>
+          </tr>
+          <tr>
+            <td><strong>T3 (TKMRPI)</strong></td>
+            <td><strong>Tata Kelola, Manajemen Risiko &amp; Pengendalian Intern</strong></td>
+            <td style="text-align:center;"><span class="badge badge-yellow">27 orang</span></td>
+            <td style="text-align:center;"><strong>77.1%</strong></td>
+            <td style="text-align:center;">40 poin</td>
+            <td style="text-align:center;">1.83</td>
+            <td style="text-align:center;"><span class="badge badge-yellow">TINGGI</span></td>
+            <td>Bimtek Penilaian Maturitas SPIP Terintegrasi BPKP, Sertifikasi Manajemen Risiko (CRMP/CRMO/QRMO), Audit Tata Kelola IACM</td>
+          </tr>
+          <tr>
+            <td><strong>T1 (MPI)</strong></td>
+            <td><strong>Manajemen Pengawasan Intern</strong></td>
+            <td style="text-align:center;"><span class="badge badge-yellow">25 orang</span></td>
+            <td style="text-align:center;"><strong>71.4%</strong></td>
+            <td style="text-align:center;">30 poin</td>
+            <td style="text-align:center;">2.14</td>
+            <td style="text-align:center;"><span class="badge badge-yellow">SEDANG-TINGGI</span></td>
+            <td>Diklat Pengawasan Intern Berbasis Risiko (PIBR/PKPT), Diklat Ketua Tim, Diklat Pengendali Teknis (Dalnis), LHA Efektif</td>
+          </tr>
+          <tr>
+            <td><strong>T4 (APBMP)</strong></td>
+            <td><strong>Analisis Proses Bisnis Mitra Pengawasan</strong></td>
+            <td style="text-align:center;"><span class="badge badge-blue">17 orang</span></td>
+            <td style="text-align:center;"><strong>48.6%</strong></td>
+            <td style="text-align:center;">27 poin</td>
+            <td style="text-align:center;">2.06</td>
+            <td style="text-align:center;"><span class="badge badge-blue">SEDANG</span></td>
+            <td>Pelatihan PBJP Level-1 bagi formasi baru, Pengelolaan BMN &amp; Keuangan Negara, Workshop Pengenalan Teknis Operasional MKG</td>
+          </tr>
+          <tr>
+            <td><strong>T2 (SA)</strong></td>
+            <td><strong>Standar Audit</strong></td>
+            <td style="text-align:center;"><span class="badge badge-green">6 orang</span></td>
+            <td style="text-align:center;"><strong>17.1%</strong></td>
+            <td style="text-align:center;">7 poin</td>
+            <td style="text-align:center;">2.80</td>
+            <td style="text-align:center;"><span class="badge badge-green">TERKENDALI</span></td>
+            <td>Penyelenggaraan PPL / Continuing Professional Development (CPD) berkala (120 JP/3 tahun) &amp; telaah sejawat (peer review)</td>
+          </tr>
+          <tr>
+            <td><strong>T5 (PPI)</strong></td>
+            <td><strong>Pelaksanaan Pengawasan Intern</strong></td>
+            <td style="text-align:center;"><span class="badge badge-green">4 orang</span></td>
+            <td style="text-align:center;"><strong>11.4%</strong></td>
+            <td style="text-align:center;">5 poin</td>
+            <td style="text-align:center;">2.97</td>
+            <td style="text-align:center;"><span class="badge badge-green">TERKENDALI (PILAR)</span></td>
+            <td>Kekuatan pilar: 15 Auditor pemegang QIA &amp; 9 CFrA; akselerasi penugasan lapangan bagi 5 Auditor Ahli Pertama formasi baru</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BAB 3: TABEL PEMETAAN INDIVIDUAL 45 PEGAWAI -->
+    <h2 class="section-title">3. Matriks Hasil Mapping Individual 45 Pegawai Inspektorat BMKG</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Pegawai</th>
+            <th>Jabatan</th>
+            <th>Pendidikan</th>
+            <th style="text-align:center;">Standar</th>
+            <th style="text-align:center;" class="sub">T1<br><small>MPI</small></th>
+            <th style="text-align:center;" class="sub">T2<br><small>SA</small></th>
+            <th style="text-align:center;" class="sub">T3<br><small>TKMRPI</small></th>
+            <th style="text-align:center;" class="sub">T4<br><small>APBMP</small></th>
+            <th style="text-align:center;" class="sub">T5<br><small>PPI</small></th>
+            <th style="text-align:center;" class="sub">T6<br><small>PMP</small></th>
+            <th style="text-align:center;">Rata2</th>
+            <th style="text-align:center;">Total Gap</th>
+            <th>Status SKJ.18</th>
+            <th>Sertifikasi Profesi</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td style="text-align:center;">1</td>
+            <td><strong>NASRUL WATHON, Ak, M.Si, QIA, CA, CFE, C.Fr.A</strong><br><small style="color:#64748B;">NIP: 19670706 198803 1 001</small></td>
+            <td><span class="badge badge-gray">Inspektur</span></td>
+            <td><small>S2 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L5</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">5</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">5</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">4</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">4.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">6</td>
+            <td><span class="badge badge-red">Gap (6 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">2</td>
+            <td><strong>VINCENTIUS FRANS YUNIAR, S E., M.Acc.</strong><br><small style="color:#64748B;">NIP: 19830625 200812 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Madya</span></td>
+            <td><small>S2 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L4</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">12</td>
+            <td><span class="badge badge-red">Gap (12 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">3</td>
+            <td><strong>WIDODO SUDIMAN, S.E.</strong><br><small style="color:#64748B;">NIP: 19710404 199803 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Madya</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L4</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">3.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span class="badge badge-blue">Certification Exam to Certify in IT Audit</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">4</td>
+            <td><strong>BAYU PRASTOWO, SE., MAB</strong><br><small style="color:#64748B;">NIP: 19860320 200911 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Madya</span></td>
+            <td><small>S2 Administrasi Bisnis</small></td>
+            <td style="text-align:center;"><strong>L4</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">3.17</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">5</td>
+            <td><span class="badge badge-red">Gap (5 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CRMP</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">5</td>
+            <td><strong>SAMSUHADI, S.E.</strong><br><small style="color:#64748B;">NIP: 19721104 199303 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Madya</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L4</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">9</td>
+            <td><span class="badge badge-red">Gap (9 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">6</td>
+            <td><strong>DEWIL HITAM, S.E.</strong><br><small style="color:#64748B;">NIP: 19841028 200812 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Madya</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L4</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.83</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">7</td>
+            <td><span class="badge badge-red">Gap (7 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CRMP</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">7</td>
+            <td><strong>SAMSUL ARIFIN, S.Kom.</strong><br><small style="color:#64748B;">NIP: 19690804 199003 1 002</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S1 Komputer</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">4</td>
+            <td><span class="badge badge-red">Gap (4 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">Certification Exam to Certify in IT Audit</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">8</td>
+            <td><strong>SUKO, S.E.</strong><br><small style="color:#64748B;">NIP: 19750817 199703 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Madya</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L4</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.83</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">7</td>
+            <td><span class="badge badge-red">Gap (7 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">9</td>
+            <td><strong>FRANSISKUS ROBY TRI RIANTO, S.A.P.</strong><br><small style="color:#64748B;">NIP: 19780329 199803 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S1 Administrasi Publik</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">3.17</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">1</td>
+            <td><span class="badge badge-red">Gap (1 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">10</td>
+            <td><strong>NUR AZIZAH, S.Mn, M.Ak</strong><br><small style="color:#64748B;">NIP: 19780601 200911 2 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S2 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">7</td>
+            <td><span class="badge badge-red">Gap (7 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">11</td>
+            <td><strong>EKA KURNIAWATI, S.E.</strong><br><small style="color:#64748B;">NIP: 19780412 200812 2 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S2 Administrasi Publik</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.83</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">12</td>
+            <td><strong>CITRA RIANA AGUSTIN, S.E.M.Si</strong><br><small style="color:#64748B;">NIP: 19850807 200812 2 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S2 Ilmu Administrasi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.33</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">5</td>
+            <td><span class="badge badge-red">Gap (5 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CGAA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">13</td>
+            <td><strong>VINCENTIUS ANDI M.K.,SE, M.Han, CRMO, QIA</strong><br><small style="color:#64748B;">NIP: 19850427 200701 1 002</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S2 Ekonomi Pertahanan</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">3.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">2</td>
+            <td><span class="badge badge-red">Gap (2 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CRMO</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">14</td>
+            <td><strong>CHINDY MEGASARI, S.E.</strong><br><small style="color:#64748B;">NIP: 19841227 200812 2 003</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">4</td>
+            <td><span class="badge badge-red">Gap (4 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">15</td>
+            <td><strong>ZURI ACHYANI, ST, MAB</strong><br><small style="color:#64748B;">NIP: 19830801 200801 2 017</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S2 Administrasi Bisnis</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.17</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">5</td>
+            <td><span class="badge badge-red">Gap (5 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">16</td>
+            <td><strong>CAROLUS RUDY TUNGGA, SE, M.Ak</strong><br><small style="color:#64748B;">NIP: 19780618 200812 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S2 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">3.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">2</td>
+            <td><span class="badge badge-red">Gap (2 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CGAA</span>, <span class="badge badge-blue">CRMO</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">17</td>
+            <td><strong>YOSI JUITA, S.E</strong><br><small style="color:#64748B;">NIP: 19810211 200812 2 002</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">6</td>
+            <td><span class="badge badge-red">Gap (6 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">18</td>
+            <td><strong>TIA PRAMUDIYASARI, S.Tr</strong><br><small style="color:#64748B;">NIP: 19930808 201312 2 001</small></td>
+            <td><span class="badge badge-gray">CLTN</span></td>
+            <td><small>S2 Geografi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">2</td>
+            <td><span class="badge badge-red">Gap (2 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">19</td>
+            <td><strong>LUSIA TI, SP, MM.</strong><br><small style="color:#64748B;">NIP: 19741227 199903 2 010</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S2 Manajemen</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">0.83</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">13</td>
+            <td><span class="badge badge-red">Gap (13 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">20</td>
+            <td><strong>NUROKHIM, ST</strong><br><small style="color:#64748B;">NIP: 19740907 199503 1 003</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Tekhnik Elektro</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.83</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">2</td>
+            <td><span class="badge badge-red">Gap (2 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">21</td>
+            <td><strong>IMAM MULIA, S.Sos.</strong><br><small style="color:#64748B;">NIP: 19750814 200812 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>-</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.67</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">22</td>
+            <td><strong>ANYELIN MEILISNITA GANO, S.Si</strong><br><small style="color:#64748B;">NIP: 19950505 201902 2 005</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Geofisika</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">0.67</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">8</td>
+            <td><span class="badge badge-red">Gap (8 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">23</td>
+            <td><strong>ARY SUTANTO</strong><br><small style="color:#64748B;">NIP: 19770106 200003 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Hukum</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.83</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">2</td>
+            <td><span class="badge badge-red">Gap (2 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">24</td>
+            <td><strong>HADIYANTO DAIPAHA</strong><br><small style="color:#64748B;">NIP: 19810507 200812 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Mahir</span></td>
+            <td><small>DIII Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.67</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">25</td>
+            <td><strong>YUNI KHOIRONI, S.E.</strong><br><small style="color:#64748B;">NIP: 19720618 199301 2 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">5</td>
+            <td><span class="badge badge-red">Gap (5 pt)</span></td>
+            <td><span class="badge badge-blue">QIA</span>, <span class="badge badge-blue">CGAA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">26</td>
+            <td><strong>HUSIN SANUSI, ST, M.Kom</strong><br><small style="color:#64748B;">NIP: 19810416 200604 1 004</small></td>
+            <td><span class="badge badge-gray">Pranata Komputer Madya</span></td>
+            <td><small>S2 Ilmu Komputer</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">6</td>
+            <td><span class="badge badge-red">Gap (6 pt)</span></td>
+            <td><span class="badge badge-blue">Certification Exam to Certify in IT Audit</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">27</td>
+            <td><strong>ROMI MARSELL, S.Si, M.Sc</strong><br><small style="color:#64748B;">NIP: 19790618 199903 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>S1 Fisika<br>S2 Geografi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.33</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">4</td>
+            <td><span class="badge badge-red">Gap (4 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">28</td>
+            <td><strong>SAGITA SINAGA, S.E.</strong><br><small style="color:#64748B;">NIP: 19831203 200812 2 002</small></td>
+            <td><span class="badge badge-gray">Arsiparis Muda</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">0.17</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">11</td>
+            <td><span class="badge badge-red">Gap (11 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">29</td>
+            <td><strong>RIMA NURMALASARI, S.Kom</strong><br><small style="color:#64748B;">NIP: 19850326 200801 2 007</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.67</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">30</td>
+            <td><strong>NASTITI MAYAROSA, S.E</strong><br><small style="color:#64748B;">NIP: 19850313 200501 2 002</small></td>
+            <td><span class="badge badge-gray">Arsiparis Muda</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">0.17</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">11</td>
+            <td><span class="badge badge-red">Gap (11 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">31</td>
+            <td><strong>RONALD REYNER NANGOI, SE</strong><br><small style="color:#64748B;">NIP: 19801111 200911 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.33</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">4</td>
+            <td><span class="badge badge-red">Gap (4 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">32</td>
+            <td><strong>VALENTINA SOPHIA MANULLANG, S.Si</strong><br><small style="color:#64748B;">NIP: 19890323 201012 2 001</small></td>
+            <td><span class="badge badge-gray">PMG Muda</span></td>
+            <td><small>S1 Fisika</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.17</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">6</td>
+            <td><span class="badge badge-red">Gap (6 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">33</td>
+            <td><strong>HERI PURWADI, S.Pd.Si.</strong><br><small style="color:#64748B;">NIP: 19910416 201502 1 001</small></td>
+            <td><span class="badge badge-gray">Kasubag Tata Usaha</span></td>
+            <td><small>S1 Pendidikan Matematika<br>S2 Master of Science<br>(Mathematics and Statistics)</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">6</td>
+            <td><span class="badge badge-red">Gap (6 pt)</span></td>
+            <td><span class="badge badge-blue">CGAA</span>, <span class="badge badge-blue">CFrA</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">34</td>
+            <td><strong>VIANCA ADJIE DWI PUTRA, S.Tr</strong><br><small style="color:#64748B;">NIP: 19910614 201012 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Muda</span></td>
+            <td><small>DIV Meteorologi</small></td>
+            <td style="text-align:center;"><strong>L3</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">6</td>
+            <td><span class="badge badge-red">Gap (6 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">35</td>
+            <td><strong>NURHAYATI,SE</strong><br><small style="color:#64748B;">NIP: 19820312 200812 2 001</small></td>
+            <td><span class="badge badge-gray">Penelaah Teknis Kebijakan</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">0.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">10</td>
+            <td><span class="badge badge-red">Gap (10 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">36</td>
+            <td><strong>ANISA PRIMAHARAHNI WOSANG</strong><br><small style="color:#64748B;">NIP: 19850423 200801 2 008</small></td>
+            <td><span class="badge badge-gray">Pranata Keuangan APBN Mahir</span></td>
+            <td><small>DIII Komputer dan Sistem Informasi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.67</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">6</td>
+            <td><span class="badge badge-red">Gap (6 pt)</span></td>
+            <td><span class="badge badge-blue">Certification Exam to Certify in IT Audit</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">37</td>
+            <td><strong>ILMIATI HASNA</strong><br><small style="color:#64748B;">NIP: 19850831 200812 2 001</small></td>
+            <td><span class="badge badge-gray">Pranata Keuangan APBN Penyelia</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">0.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">10</td>
+            <td><span class="badge badge-red">Gap (10 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">38</td>
+            <td><strong>AKHMAD GENTER SAMBANGAN</strong><br><small style="color:#64748B;">NIP: 19920607 201210 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>DIV Instrumentasi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">4</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">2.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span class="badge badge-blue">Certification Exam to Certify in IT Audit</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">39</td>
+            <td><strong>MUHAMMAD BERLIAN WILDAN DIINAN SHAH, S.Tr</strong><br><small style="color:#64748B;">NIP: 19930415 201312 1 001</small></td>
+            <td><span class="badge badge-gray">PMG Pertama</span></td>
+            <td><small>DIV Klimatologi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">3</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">4</td>
+            <td><span class="badge badge-red">Gap (4 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">40</td>
+            <td><strong>ADITYA PRATAMA, S.Sos.</strong><br><small style="color:#64748B;">NIP: 19960108 202505 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Hubungan Internasional</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">41</td>
+            <td><strong>DWI PRASTYO, S.E</strong><br><small style="color:#64748B;">NIP: 19901220 202505 1 002</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Ekonomi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">42</td>
+            <td><strong>JAUZA IFTINAN NAFSI, S.E</strong><br><small style="color:#64748B;">NIP: 20001221 202505 2 006</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Ekonomi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">43</td>
+            <td><strong>KMS M RIDHO FIRMAN RAMADHAN, S.Hi</strong><br><small style="color:#64748B;">NIP: 19980125 202505 1 001</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Hubungan Internasional</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">44</td>
+            <td><strong>JULIYANTO BISRI BAGASKARA, S.Ak</strong><br><small style="color:#64748B;">NIP: 19980712 202505 1 004</small></td>
+            <td><span class="badge badge-gray">Auditor Pertama</span></td>
+            <td><small>S1 Akuntansi</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-pass">2</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">1</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">1.50</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">3</td>
+            <td><span class="badge badge-red">Gap (3 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:center;">45</td>
+            <td><strong>NURMAN HIDAYAT, A.Md.Kom</strong><br><small style="color:#64748B;">NIP: 19840823 202321 1 009</small></td>
+            <td><span class="badge badge-gray">Pranata Komputer Terampil</span></td>
+            <td><small>D3 Manajemen Informatika</small></td>
+            <td style="text-align:center;"><strong>L2</strong></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center;"><span class="level-box level-gap">0</span></td>
+            <td style="text-align:center; font-family:var(--font-mono); font-weight:600;">0.00</td>
+            <td style="text-align:center; font-weight:700; color:#991B1B;">12</td>
+            <td><span class="badge badge-red">Gap (12 pt)</span></td>
+            <td><span style="color:#94A3B8;">-</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BAB 4: ROADMAP TNA -->
+    <h2 class="section-title">4. Roadmap Rekomendasi Training Needs Analysis (TNA) 2026–2027</h2>
+    <div class="grid-two">
+      <div class="info-card">
+        <h4>Prioritas 1: Transformasi Metodologi Pengawasan Digital &amp; CAATs (T6)</h4>
+        <p style="font-size:12.5px; color:#475569; margin-bottom:8px;">
+          Mengatasi 91.4% defisit pada unit T6. Di tengah pengoperasian 9 sistem pengawasan mandiri di BMKG (e-PKPT, SIGAP, WBS, dll), auditor wajib dibekali kemampuan pengolahan big data transaksi, computer assisted audit techniques, dan pemanfaatan AI Automation untuk memangkas waktu pengujian bukti.
+        </p>
+        <ul style="font-size:12px; margin-left:18px; color:#1E293B;">
+          <li><strong>Program:</strong> Pelatihan CAATs / Data Analytics Audit &amp; Audit SPBE Sistem Informasi.</li>
+          <li><strong>Sasaran:</strong> 18 Auditor Ahli Pertama dan Auditor Ahli Muda.</li>
+          <li><strong>Penyelenggara:</strong> Pusdiklatwas BPKP / Lembaga Sertifikasi IT Governance.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>Prioritas 2: Sertifikasi Manajemen Risiko &amp; Penguatan SPIP (T3)</h4>
+        <p style="font-size:12.5px; color:#475569; margin-bottom:8px;">
+          Mengatasi 77.1% defisit pada unit T3 guna menopang ketercapaian target IKU 1.1 (Maturitas SPIP Level 3 Terintegrasi BMKG). Saat ini pemegang sertifikasi manajemen risiko baru berjumlah 4 orang (Bayu Prastowo, Dewil Hitam, Vincentius Andi, Carolus Rudy Tungga).
+        </p>
+        <ul style="font-size:12px; margin-left:18px; color:#1E293B;">
+          <li><strong>Program:</strong> Bimtek SPIP Terintegrasi &amp; Uji Sertifikasi Profesi CRMO / CRMP / QRMO.</li>
+          <li><strong>Sasaran:</strong> 12 Auditor Ahli Muda &amp; Madya.</li>
+          <li><strong>Target Output:</strong> Kesiapan tim penjamin mutu manajemen risiko di 180+ stasiun UPT daerah.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- STRUKTUR SPREADSHEET 5 SHEET -->
+    <div class="alert-box info" style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <strong>File Spreadsheet Pemetaan Lengkap (5 Sheet):</strong><br>
+        Telah diperbarui file Excel resmi berstandar SKJ.18 Tahun 2022: 
+        <span style="font-family:var(--font-mono); font-weight:700;">Mapping_Kompetensi_Pegawai_IPR_SKJ18_2022.xlsx</span><br>
+        <span style="font-size:11.5px; color:#1E3A8A;">1. RINGKASAN EKSEKUTIF | 2. <strong>METODE &amp; REGULASI SKJ.18 (Baru)</strong> | 3. MAPPING SKJ.18 LENGKAP | 4. KAMUS KOMPETENSI SKJ.18 | 5. RENCANA TNA 2026-2027</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div>&copy; 2026 Inspektorat Badan Meteorologi, Klimatologi, dan Geofisika (BMKG)</div>
+    <div>Dokumen Analisis Tata Kelola SDM Pengawasan Berdasarkan KepmenPANRB No. SKJ.18 Tahun 2022</div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Sticky Toolbar -->
+<div class="edit-toolbar" id="editToolbar" style="display:none;">
+  <button class="toolbar-btn btn-reset-all" id="btnResetAll">🗑️ Reset Semua</button>
+  <button class="toolbar-btn btn-export" id="btnExport">💾 Export Data <span class="edit-count-badge" id="editCountBadge">0</span></button>
+</div>
+
+<!-- Overlay -->
+<div id="sertifOverlay" style="position:fixed;inset:0;z-index:9998;display:none;"></div>
+
+<!-- Editor Popup -->
+<div class="sertif-editor" id="sertifEditor" style="display:none;">
+  <div class="sertif-editor-title">✏️ Edit Sertifikasi Profesi</div>
+  <div class="sertif-editor-name" id="editorPegawaiName">-</div>
+  <div style="position:relative;">
+    <div class="tag-input-wrapper" id="tagInputWrapper">
+      <input type="text" class="tag-input-field" id="tagInputField" placeholder="Ketik &amp; Enter atau pilih..." autocomplete="off">
+    </div>
+    <ul class="suggestions-list" id="suggestionsList"></ul>
+  </div>
+  <div class="tag-hint">Tekan <strong>Enter</strong> atau <strong>,</strong> untuk tambah. Klik ✕ untuk hapus tag.</div>
+  <div class="editor-actions">
+    <button class="btn-save" id="btnSave">✅ Simpan</button>
+    <button class="btn-clear" id="btnClearRow">🗑 Kosongkan</button>
+    <button class="btn-cancel" id="btnCancel">✕ Batal</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'tna_sertifikasi_ipr_2026';
+  var CERT_SUGGESTIONS = [
+    'QIA','CFrA','CGAA','CRMP','CRMO','QRMO','CA','CPA','CISA','CIA','CFE',
+    'CPMA','CHFP','CGCAE','IT Audit (Proses Sertifikasi)',
+    'Certification Exam to Certify in IT Audit'
+  ];
+
+  function showToast(msg, type) {
+    type = type || 'success';
+    var c = document.getElementById('toastContainer');
+    var t = document.createElement('div');
+    t.className = 'toast ' + type;
+    t.innerHTML = (type === 'success' ? '✅' : 'ℹ️') + ' ' + msg;
+    c.appendChild(t);
+    setTimeout(function() {
+      t.style.opacity = '0';
+      t.style.transition = 'opacity 0.4s';
+      setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 400);
+    }, 2800);
+  }
+
+  function loadStorage() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch(e) { return {}; }
+  }
+
+  function saveStorage(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function renderBadges(certs) {
+    if (!certs || certs.length === 0) return '<span style="color:#94A3B8;">-</span>';
+    return certs.map(function(c) {
+      return '<span class="badge badge-blue">' + c + '</span>';
+    }).join(' ');
+  }
+
+  function updateToolbar(count) {
+    var toolbar = document.getElementById('editToolbar');
+    var badge = document.getElementById('editCountBadge');
+    toolbar.style.display = count > 0 ? 'flex' : 'none';
+    badge.textContent = count;
+  }
+
+  var currentCell = null;
+  var currentCerts = [];
+
+  function getNipFromRow(row) {
+    var nameCell = row.querySelector('td:nth-child(2) small');
+    if (!nameCell) return null;
+    var text = nameCell.textContent || '';
+    var m = text.match(/NIP:\s*([\d\s]+)/);
+    if (!m) return null;
+    return m[1].trim().replace(/\s+/g, '');
+  }
+
+  function initTable() {
+    var rows = document.querySelectorAll('tbody tr');
+    var stored = loadStorage();
+    var modifiedCount = 0;
+
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      var nip = getNipFromRow(row);
+      if (!nip) continue;
+      row.setAttribute('data-nip', nip);
+
+      var cells = row.querySelectorAll('td');
+      var sertifCell = cells[cells.length - 1];
+      sertifCell.classList.add('sertif-cell');
+      sertifCell.setAttribute('data-nip', nip);
+
+      var originalHTML = sertifCell.innerHTML;
+      sertifCell.setAttribute('data-original', originalHTML);
+
+      if (stored[nip] !== undefined) {
+        sertifCell.innerHTML = renderBadges(stored[nip]);
+        sertifCell.classList.add('modified');
+        sertifCell.setAttribute('data-certs', JSON.stringify(stored[nip]));
+        modifiedCount++;
+      } else {
+        var existingBadges = [];
+        var badgeEls = sertifCell.querySelectorAll('.badge-blue');
+        for (var b = 0; b < badgeEls.length; b++) {
+          existingBadges.push(badgeEls[b].textContent.trim());
+        }
+        sertifCell.setAttribute('data-certs', JSON.stringify(existingBadges));
+      }
+
+      (function(cell) {
+        cell.addEventListener('click', function() { openEditor(cell); });
+      })(sertifCell);
+    }
+
+    updateToolbar(modifiedCount);
+  }
+
+  function openEditor(cell) {
+    currentCell = cell;
+    var nip = cell.getAttribute('data-nip');
+    var certsStr = cell.getAttribute('data-certs') || '[]';
+    try { currentCerts = JSON.parse(certsStr).slice(); }
+    catch(e) { currentCerts = []; }
+
+    var row = cell.closest('tr');
+    var nameEl = row ? row.querySelector('td:nth-child(2) strong') : null;
+    var empName = nameEl ? nameEl.textContent.trim() : 'Pegawai';
+    var nipFormatted = nip.replace(/(\d{8})(\d{6})(\d)(\d{3})/, '$1 $2 $3 $4');
+    document.getElementById('editorPegawaiName').textContent = empName + ' | NIP: ' + nipFormatted;
+
+    renderTags();
+    document.getElementById('tagInputField').value = '';
+    hideSuggestions();
+
+    var editor = document.getElementById('sertifEditor');
+    editor.style.display = 'block';
+    document.getElementById('sertifOverlay').style.display = 'block';
+
+    var rect = cell.getBoundingClientRect();
+    var edW = 380, edH = 230;
+    var left = rect.right + 10;
+    var top = rect.top;
+    if (left + edW > window.innerWidth) left = rect.left - edW - 10;
+    if (top + edH > window.innerHeight) top = window.innerHeight - edH - 10;
+    if (left < 10) left = 10;
+    if (top < 10) top = 10;
+    editor.style.left = left + 'px';
+    editor.style.top = top + 'px';
+
+    setTimeout(function() { document.getElementById('tagInputField').focus(); }, 50);
+  }
+
+  function closeEditor() {
+    document.getElementById('sertifEditor').style.display = 'none';
+    document.getElementById('sertifOverlay').style.display = 'none';
+    hideSuggestions();
+    currentCell = null;
+  }
+
+  function renderTags() {
+    var wrapper = document.getElementById('tagInputWrapper');
+    var input = document.getElementById('tagInputField');
+    var chips = wrapper.querySelectorAll('.tag-chip');
+    for (var i = 0; i < chips.length; i++) chips[i].parentNode.removeChild(chips[i]);
+
+    for (var j = 0; j < currentCerts.length; j++) {
+      (function(cert, idx) {
+        var chip = document.createElement('span');
+        chip.className = 'tag-chip';
+        chip.innerHTML = cert + ' <span class="remove-tag" data-idx="' + idx + '">&#x2715;</span>';
+        chip.querySelector('.remove-tag').addEventListener('click', function(e) {
+          e.stopPropagation();
+          currentCerts.splice(idx, 1);
+          renderTags();
+        });
+        wrapper.insertBefore(chip, input);
+      })(currentCerts[j], j);
+    }
+  }
+
+  function showSuggestions(query) {
+    var list = document.getElementById('suggestionsList');
+    if (!query) { hideSuggestions(); return; }
+    var q = query.toLowerCase();
+    var filtered = CERT_SUGGESTIONS.filter(function(s) {
+      return s.toLowerCase().indexOf(q) !== -1 && currentCerts.indexOf(s) === -1;
+    });
+    if (!filtered.length) { hideSuggestions(); return; }
+    list.innerHTML = filtered.map(function(s) { return '<li>' + s + '</li>'; }).join('');
+    list.style.display = 'block';
+    var wrapper = document.getElementById('tagInputWrapper');
+    var wRect = wrapper.getBoundingClientRect();
+    var edRect = document.getElementById('sertifEditor').getBoundingClientRect();
+    list.style.top = (wRect.bottom - edRect.top) + 'px';
+    list.style.left = '0';
+    list.style.width = wRect.width + 'px';
+    var items = list.querySelectorAll('li');
+    for (var i = 0; i < items.length; i++) {
+      (function(li) {
+        li.addEventListener('mousedown', function(e) {
+          e.preventDefault();
+          addTag(li.textContent);
+        });
+      })(items[i]);
+    }
+  }
+
+  function hideSuggestions() {
+    document.getElementById('suggestionsList').style.display = 'none';
+  }
+
+  function addTag(val) {
+    val = val.trim().replace(/,$/, '');
+    if (val && currentCerts.indexOf(val) === -1) {
+      currentCerts.push(val);
+      renderTags();
+    }
+    document.getElementById('tagInputField').value = '';
+    hideSuggestions();
+    document.getElementById('tagInputField').focus();
+  }
+
+  function saveCurrentCell() {
+    if (!currentCell) return;
+    var nip = currentCell.getAttribute('data-nip');
+    var stored = loadStorage();
+    stored[nip] = currentCerts.slice();
+    saveStorage(stored);
+
+    currentCell.innerHTML = renderBadges(currentCerts);
+    currentCell.setAttribute('data-certs', JSON.stringify(currentCerts));
+    currentCell.classList.add('modified');
+
+    updateToolbar(Object.keys(stored).length);
+    showToast('Sertifikasi disimpan! Data tetap ada walau halaman ditutup.');
+    closeEditor();
+  }
+
+  // Input events
+  document.getElementById('tagInputField').addEventListener('input', function() {
+    showSuggestions(this.value);
+  });
+  document.getElementById('tagInputField').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      var val = this.value.trim().replace(/,$/, '');
+      if (val) addTag(val); else hideSuggestions();
+    } else if (e.key === 'Escape') {
+      closeEditor();
+    } else if (e.key === 'Backspace' && !this.value && currentCerts.length) {
+      currentCerts.pop();
+      renderTags();
+    }
+  });
+  document.getElementById('tagInputField').addEventListener('blur', function() {
+    setTimeout(hideSuggestions, 150);
+  });
+  document.getElementById('tagInputWrapper').addEventListener('click', function() {
+    document.getElementById('tagInputField').focus();
+  });
+  document.getElementById('btnSave').addEventListener('click', saveCurrentCell);
+  document.getElementById('btnCancel').addEventListener('click', closeEditor);
+  document.getElementById('btnClearRow').addEventListener('click', function() {
+    currentCerts = [];
+    renderTags();
+  });
+  document.getElementById('sertifOverlay').addEventListener('click', closeEditor);
+
+  // Export
+  document.getElementById('btnExport').addEventListener('click', function() {
+    var stored = loadStorage();
+    var rows = document.querySelectorAll('tbody tr');
+    var exportData = [];
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      var nip = row.getAttribute('data-nip');
+      if (!nip) continue;
+      var nameEl = row.querySelector('td:nth-child(2) strong');
+      var jabatanEl = row.querySelector('td:nth-child(3) span');
+      var sertifCell = row.querySelector('.sertif-cell');
+      var certsStr = sertifCell ? sertifCell.getAttribute('data-certs') || '[]' : '[]';
+      var certs = [];
+      try { certs = JSON.parse(certsStr); } catch(e) {}
+      exportData.push({
+        nip: nip,
+        nama: nameEl ? nameEl.textContent.trim() : '',
+        jabatan: jabatanEl ? jabatanEl.textContent.trim() : '',
+        sertifikasi: certs.join(', '),
+        diperbarui: stored[nip] ? new Date().toLocaleString('id-ID') : null
+      });
+    }
+    var json = JSON.stringify(exportData, null, 2);
+    var blob = new Blob([json], {type: 'application/json'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'sertifikasi_ipr_' + new Date().toISOString().slice(0,10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() { URL.revokeObjectURL(url); a.parentNode.removeChild(a); }, 1000);
+    showToast('Data berhasil diekspor ke file JSON.', 'info');
+  });
+
+  // Reset All
+  document.getElementById('btnResetAll').addEventListener('click', function() {
+    if (!confirm('Reset semua data sertifikasi yang sudah Anda input?\n\nTindakan ini TIDAK dapat dibatalkan.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    var cells = document.querySelectorAll('.sertif-cell');
+    for (var i = 0; i < cells.length; i++) {
+      var cell = cells[i];
+      var orig = cell.getAttribute('data-original') || '<span style="color:#94A3B8;">-</span>';
+      cell.innerHTML = orig;
+      cell.classList.remove('modified');
+      var badgeEls = cell.querySelectorAll('.badge-blue');
+      var existingBadges = [];
+      for (var b = 0; b < badgeEls.length; b++) existingBadges.push(badgeEls[b].textContent.trim());
+      cell.setAttribute('data-certs', JSON.stringify(existingBadges));
+    }
+    updateToolbar(0);
+    showToast('Semua data sertifikasi telah direset.', 'info');
+  });
+
+  // Info banner above BAB 3
+  function addInfoBanner() {
+    var allTitles = document.querySelectorAll('h2.section-title');
+    if (allTitles.length < 3) return;
+    var target = allTitles[2];
+    var banner = document.createElement('div');
+    banner.className = 'alert-box info';
+    banner.style.marginBottom = '16px';
+    banner.innerHTML = '<strong>💡 Kolom Interaktif: Sertifikasi Profesi</strong><br>'
+      + 'Klik kolom <strong>Sertifikasi Profesi</strong> (kolom terakhir) pada baris Anda untuk menambah atau memperbarui data sertifikasi. '
+      + 'Data akan <strong>tersimpan otomatis</strong> di browser ini dan tetap ada meskipun halaman ditutup &amp; dibuka kembali. '
+      + '<span style="color:#1E40AF; font-size:11px;">📌 Data bersifat lokal pada browser/perangkat ini (localStorage).</span>';
+    target.parentNode.insertBefore(banner, target.nextSibling);
+  }
+
+  // Boot on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function() {
+    initTable();
+    addInfoBanner();
+    var stored = loadStorage();
+    var count = Object.keys(stored).length;
+    if (count > 0) {
+      showToast(count + ' data sertifikasi dimuat dari penyimpanan lokal browser.', 'info');
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
